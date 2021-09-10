@@ -33,7 +33,7 @@ import java.util.Map;
 public class Database {
 
 
-    
+
     private static Double s;
     private static Double sn;
     private static String r;
@@ -93,7 +93,7 @@ public class Database {
     }
 
     void getInfoAll() throws IOException {
-/*
+
         Log.d("abc", "Seven start");
         db.collection("seveneleven")
                 .get()
@@ -111,7 +111,7 @@ public class Database {
                         }
                     }
                 });
-*/
+
         Log.d("abc", "Lawson start");
         db.collection("lawson")
                 .get()
@@ -130,7 +130,7 @@ public class Database {
                         }
                     }
                 });
-/*
+
         Log.d("abc", "Family start");
         db.collection("family")
                 .get()
@@ -148,7 +148,7 @@ public class Database {
                         }
                     }
                 });
- */
+ 
     }
 
     Double getStar(String shop, String productNumber) {
