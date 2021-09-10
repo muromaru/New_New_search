@@ -32,15 +32,8 @@ import java.util.Map;
 
 public class Database {
 
-    ArrayList<String[]> s_info = new ArrayList<String[]>();
-    ArrayList<String[]> l_info = new ArrayList<String[]>();
-    ArrayList<String[]> f_info = new ArrayList<String[]>();
-    List<ArrayList<String[]>> shop = new ArrayList<>();
 
-    private static String i1;
-    private static String i2;
-    private static String i3;
-    private static String i4;
+    
     private static Double s;
     private static Double sn;
     private static String r;
