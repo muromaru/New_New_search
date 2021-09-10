@@ -31,6 +31,15 @@ public class FamilyMart extends Shop {
 
 
     public static void setData(Map data) {
+        /*
+        Log.d("abc", "Family");
+        Log.d("abc", (String)data.get("info1"));
+        Log.d("abc", (String)data.get("info2"));
+        Log.d("abc", (String)data.get("info3"));
+        Log.d("abc", (String)data.get("info4"));
+        Log.d("abc", data.get("star").toString());
+        Log.d("abc", data.get("star_num").toString());
+        */
         product.add(data);
     }
 
