@@ -32,121 +32,28 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         textView = findViewById(R.id.textview);
-        final ImageView imageView0 = findViewById(R.id.imageview0);
-//        final ImageView imageView1 = findViewById(R.id.imageview1);
-        final ImageView imageView2 = findViewById(R.id.imageview2);
-        final ImageView imageView3 = findViewById(R.id.imageview3);
-        final ImageView imageView4 = findViewById(R.id.imageview4);
-        final ImageView imageView5 = findViewById(R.id.imageview5);
 
 
         AsyncWork asyncWork = new AsyncWork();
         asyncWork.execute();
 
-        Button button0 = findViewById(R.id.button0);
-        Button button1 = findViewById(R.id.button1);
-        Button button2 = findViewById(R.id.button2);
-        Button button3 = findViewById(R.id.button3);
-        Button button4 = findViewById(R.id.button4);
-        Button button5 = findViewById(R.id.button5);
 
+        int num = 0;
+        while (num < 7){
+            String str = String.valueOf(num);
+            ImageButton "imgbutton"+str = findViewById(R.id.);
+            imgbutton"+num".setImageBitmap(imageValues[num]);
+            imgbutton"+num".setOnClickListener(new View.OnClickListener() {
+                                              @RequiresApi(api = Build.VERSION_CODES.O)
+                                              @Override
+                                              public void onClick(View v) {
+                                                  Intent intent = new Intent(getApplication(), ProductActivity.class);
+                                                  intent.putExtra("productinfo",num);
+                                                  startActivity(intent);
+                                              }
 
-        button0.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                Log.d("abc", "Exe0");
-                String str = String.join("\n", textValues[1]);
-                textView.setText(str);
-                imageView0.setImageBitmap(imageValues[0]);
-                ImageButton imgbutton = findViewById(R.id.imagebutton0);
-                imgbutton.setImageBitmap(imageValues[0]);
-                imgbutton.setOnClickListener(new View.OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.O)
-                    @Override
-                    public void onClick(View v) {
-                        Log.d("abc", "bbbbbbbbbbb");
-                        //MainActivity2.setImageValues2(imageValues[0]);
-                        Intent intent = new Intent(MainActivity.this, MurogaActivity2.class);
-                        intent.putExtra("TEst", "Sample Message");
-                        startActivity(intent);
-                    }
-                });
-            }
-        });
-
-        button1.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                Log.d("abc", "Exe1");
-                String str = String.join("\n", textValues[1]);
-                textView.setText(str);
-                ImageButton imgbutton1 = findViewById(R.id.imagebutton1);
-                imgbutton1.setImageBitmap(imageValues[1]);
-                imgbutton1.setOnClickListener(new View.OnClickListener() {
-                    @RequiresApi(api = Build.VERSION_CODES.O)
-                    @Override
-                    public void onClick(View v) {
-                        Log.d("abc", "imagebutton1");
-                        //MainActivity2.setImageValues2(imageValues[0]);
-                        Intent intent = new Intent(getApplication(), MatsuokaActivity1.class);
-//                        intent.putExtra("TEst", "Sample Message");
-                        startActivity(intent);
-                    }
-                });
-
-            }
-        });
-        button2.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                Log.d("abc", "Exe2");   //Stringは「文字列」
-                String str = String.join("\n", textValues[2]);  //二次元配列であるtextValueを一次元にがっちゃんこ。
-                textView.setText(str);
-                imageView2.setImageBitmap(imageValues[2]);
-
-            }
-        });
-        button3.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                Log.d("abc", "Exe3");
-                String str = String.join("\n", textValues[3]);
-                textView.setText(str);
-                imageView3.setImageBitmap(imageValues[3]);
-                textView.setText(str);
-            }
-        });
-        button4.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                Log.d("abc", "Exe4");
-                String str = String.join("\n", textValues[4]);
-                textView.setText(str);
-                textView.setText(str);
-                imageView4.setImageBitmap(imageValues[4]);
-                ImageView image4 = findViewById(R.id.imageview4);   //表示非表示
-                if (image4.getVisibility() != View.VISIBLE) {
-                    image4.setVisibility(View.VISIBLE);
-                } else {
-                    image4.setVisibility(View.INVISIBLE);
-                }
-            }
-        });
-        button5.setOnClickListener(new View.OnClickListener() {
-            @RequiresApi(api = Build.VERSION_CODES.O)
-            @Override
-            public void onClick(View v) {
-                Log.d("abc", "aaaaaaaaaaaaaaaaa");
-                Intent intent = new Intent(MainActivity.this, MurogaActivity2.class);
-                intent.putExtra("TEst", "Sample Message");
-                startActivity(intent);
-            }
-        });
+            num = num + 1;
+        }
 
 
 
