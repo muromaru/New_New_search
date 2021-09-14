@@ -33,7 +33,7 @@ import java.util.Map;
 public class Database {
 
 
-    
+
     private static Double s;
     private static Double sn;
     private static String r;
@@ -44,13 +44,7 @@ public class Database {
     FirebaseStorage storage = FirebaseStorage.getInstance();
 
 
-    void setInfo(String shop, String productNumber, String info) {
-        Map<String, Object> data = new HashMap<>();
-        data.put("info", info);
 
-        db.collection(shop).document(productNumber)
-                .set(data, SetOptions.merge());
-    }
 
 
 
@@ -93,7 +87,7 @@ public class Database {
     }
 
     void getInfoAll() throws IOException {
-/*
+
         Log.d("abc", "Seven start");
         db.collection("seveneleven")
                 .get()
@@ -106,12 +100,13 @@ public class Database {
                                 SevenEleven.setData(sss);
                             }
                             Log.d("abc", "Seven complete");
+                            SevenEleven.sendMain();
                         } else {
                             Log.d("abc", "Error getting documents: ", task.getException());
                         }
                     }
                 });
-*/
+
         Log.d("abc", "Lawson start");
         db.collection("lawson")
                 .get()
@@ -130,7 +125,7 @@ public class Database {
                         }
                     }
                 });
-/*
+
         Log.d("abc", "Family start");
         db.collection("family")
                 .get()
@@ -143,134 +138,38 @@ public class Database {
                                 FamilyMart.setData(fff);
                             }
                             Log.d("abc", "Family complete");
+                            FamilyMart.sendMain();
                         } else {
                             Log.d("abc", "Error getting documents: ", task.getException());
                         }
                     }
                 });
- */
+ 
     }
 
-    Double getStar(String shop, String productNumber) {
-        DocumentReference docRef = db.collection(shop).document(productNumber);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
 
-                        Map aaa = document.getData();
-                        s = (Double) aaa.get("star");
-                        Log.d("abc_star", String.valueOf(s));
-                    } else {
-                        Log.d("abc", "No such document");
-                    }
-                } else {
-                    Log.d("abc", "get failed with ", task.getException());
-                }
-            }
-        });
-        return s;
-    }
 
-    Double getStarNum(String shop, String productNumber) {
-        DocumentReference docRef = db.collection(shop).document(productNumber);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
 
-                        Map aaa = document.getData();
-                        sn = (Double) aaa.get("star_num");
-                        Log.d("abc_starNum", String.valueOf(sn));
-                    } else {
-                        Log.d("abc", "No such document");
-                    }
-                } else {
-                    Log.d("abc", "get failed with ", task.getException());
-                }
-            }
-        });
-        return sn;
-    }
-
-    String getReview(String shop, String productNumber, String reviewName) {
-        DocumentReference docRef = db.collection(shop).document(productNumber);
-        docRef.get().addOnCompleteListener(new OnCompleteListener<DocumentSnapshot>() {
-            @Override
-            public void onComplete(@NonNull Task<DocumentSnapshot> task) {
-                if (task.isSuccessful()) {
-                    DocumentSnapshot document = task.getResult();
-                    if (document.exists()) {
-
-                        Map aaa = document.getData();
-                        r = (String) aaa.get(reviewName);
-                        Log.d("abc", r);
-                    } else {
-                        Log.d("abc", "No such document");
-                    }
-                } else {
-                    Log.d("abc", "get failed with ", task.getException());
-                }
-            }
-        });
-        return r;
-    }
-
-    void getImage(Integer i) {
+    void getImage(String date, String shop, Integer i) {
         StorageReference storageRef = storage.getReference();
-        StorageReference pathReference = storageRef.child("2109_1/family"+i+".jpg");
+        StorageReference pathReference = storageRef.child(date+"/"+shop+i+".jpg");
         StorageReference listRef = storageRef.child("2109_1");
-        Integer a = 1;
-        if (a == 1) {
-            //StorageReference gsReference = storage.getReferenceFromUrl("gs://new-search-8836c.appspot.com/aaa/0252997.jpg");
-            //StorageReference httpsReference = storage.getReferenceFromUrl("https://firebasestorage.googleapis.com/b/bucket/o/images%20stars.jpg");
-            final long ONE_MEGABYTE = 1024 * 1024;
-            pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
-                @Override
-                public void onSuccess(byte[] bytes) {
-                    Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                    MainActivity.setImageValue(bitmap);
-                    Log.d("abc", "success"+(i+1));
-                }
-            }).addOnFailureListener(new OnFailureListener() {
-                @Override
-                public void onFailure(@NonNull Exception exception) {
-                    // Handle any errors
-                    Log.d("abc", "error");
-                }
-            });
-        }
-        if (a == 2) {
-            listRef.listAll()
-                    .addOnSuccessListener(new OnSuccessListener<ListResult>() {
-                        @Override
-                        public void onSuccess(ListResult listResult) {
-                            for (StorageReference prefix : listResult.getPrefixes()) {
-                                // All the prefixes under listRef.
-                                // You may call listAll() recursively on them.
-                                Log.d("abc", "success1");
-                            }
+        final long ONE_MEGABYTE = 1024 * 1024;
+        pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+            @Override
+            public void onSuccess(byte[] bytes) {
+                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+                MainActivity.setImage(shop,bitmap);
+                Log.d("abc", "success"+shop+(i+1));
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+                Log.d("abc", "error");
+            }
+        });
 
-                            for (StorageReference item : listResult.getItems()) {
-                                // All the items under listRef.
-                                Log.d("abc", "success2");
-                            }
-                        }
-                    })
-                    .addOnFailureListener(new OnFailureListener() {
-                        @Override
-                        public void onFailure(@NonNull Exception e) {
-                            // Uh-oh, an error occurred!
-                            Log.d("abc", "error");
-                        }
-                    });
-
-
-        }
 
     }
 }
