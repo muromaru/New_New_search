@@ -1,24 +1,12 @@
 package muroga.matsuoka.new_search;
 
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
-import android.util.Log;
-
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-
-import java.io.*;
 import java.io.IOException;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Map;
 
 public class Lawson extends Shop {
 
-    private String[]    info;
     private static ArrayList<Map> product = new ArrayList<Map>();
 
 
@@ -45,11 +33,6 @@ public class Lawson extends Shop {
         */
         product.add(data);
     }
-
-    public static ArrayList<Map> getProductInfo(){
-        return product;
-    }
-
 
 
 }

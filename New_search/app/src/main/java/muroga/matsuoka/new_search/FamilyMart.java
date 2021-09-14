@@ -38,10 +38,5 @@ public class FamilyMart extends Shop {
         product.add(data);
     }
 
-    public static ArrayList<Map> getProductInfo(){
-        return product;
-    }
-
-
 
 }
