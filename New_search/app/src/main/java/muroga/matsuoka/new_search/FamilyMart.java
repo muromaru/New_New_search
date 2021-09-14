@@ -21,6 +21,10 @@ public class FamilyMart extends Shop {
     }
 
 
+    public static void sendMain() {
+        MainActivity.setInfo("family",product);
+    }
+
     public static void setData(Map data) {
         /*
         Log.d("abc", "Family");

@@ -17,6 +17,10 @@ public class SevenEleven extends Shop {
         this.url = "https://www.sej.co.jp";
     }
 
+    public static void sendMain() {
+        MainActivity.setInfo("seven",product);
+    }
+
     public static void setData(Map data) {
         /*
         Log.d("abc", "SevenEleven");

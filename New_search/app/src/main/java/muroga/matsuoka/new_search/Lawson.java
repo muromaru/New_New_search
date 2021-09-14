@@ -30,15 +30,9 @@ public class Lawson extends Shop {
     }
 
     public static void sendMain() {
-        String[][] test = new String[10][4];
-        for(int i=0;i<10;i++) {
-            test[i][0]=(String)product.get(i).get("info1");
-            test[i][1]=(String)product.get(i).get("info2");
-            test[i][2]=(String)product.get(i).get("info3");
-            test[i][3]=(String)product.get(i).get("info4");
-        }
-        MainActivity.setTextValues(test);
+        MainActivity.setInfo("lawson",product);
     }
+
     public static void setData(Map data) {
         /*
         Log.d("abc", "Lawson");

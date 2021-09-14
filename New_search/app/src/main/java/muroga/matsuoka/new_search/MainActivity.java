@@ -19,10 +19,15 @@ import android.widget.AdapterView;
 import android.view.View.OnClickListener;
 import android.widget.AdapterView.OnItemSelectedListener;
 
+import java.util.ArrayList;
+import java.util.Map;
+
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
-    private static String[][] textValues;
+    private static ArrayList<Map> productInfoS = new ArrayList<Map>();
+    private static ArrayList<Map> productInfoL = new ArrayList<Map>();
+    private static ArrayList<Map> productInfoF = new ArrayList<Map>();
     private final String[] spinnerArea = {"北海道", "東北", "関東", "甲信越", "東海", "近畿", "中国", "四国", "九州", "沖縄"};
     private static Bitmap[] imageValues = new Bitmap[100];
     private static Integer cnt=0;
@@ -56,7 +61,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("abc", "Exe0");
-                String str = String.join("\n", textValues[1]);
+                String str = (String)productInfoF.get(0).get("info1");
                 textView.setText(str);
                 imageView0.setImageBitmap(imageValues[0]);
                 ImageButton imgbutton = findViewById(R.id.imagebutton0);
@@ -80,7 +85,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("abc", "Exe1");
-                String str = String.join("\n", textValues[1]);
+                String str = (String)productInfoF.get(1).get("info1");
                 textView.setText(str);
                 ImageButton imgbutton1 = findViewById(R.id.imagebutton1);
                 imgbutton1.setImageBitmap(imageValues[1]);
@@ -103,7 +108,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("abc", "Exe2");   //Stringは「文字列」
-                String str = String.join("\n", textValues[2]);  //二次元配列であるtextValueを一次元にがっちゃんこ。
+                String str = (String)productInfoF.get(2).get("info1");
+                textView.setText(str);  //二次元配列であるtextValueを一次元にがっちゃんこ。
                 textView.setText(str);
                 imageView2.setImageBitmap(imageValues[2]);
 
@@ -114,7 +120,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("abc", "Exe3");
-                String str = String.join("\n", textValues[3]);
+                String str = (String)productInfoF.get(3).get("info1");
+                textView.setText(str);
                 textView.setText(str);
                 imageView3.setImageBitmap(imageValues[3]);
                 textView.setText(str);
@@ -125,8 +132,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 Log.d("abc", "Exe4");
-                String str = String.join("\n", textValues[4]);
-                textView.setText(str);
+                String str = (String)productInfoF.get(4).get("info1");
                 textView.setText(str);
                 imageView4.setImageBitmap(imageValues[4]);
                 ImageView image4 = findViewById(R.id.imageview4);   //表示非表示
@@ -184,13 +190,12 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    //publicなのでどこからでも使える。
-    public static void setTextValues (String[][]t){  //String[][]tは引数。tという名前の二次元配列
-        textValues = t; //二次元配列tをtextValuesに入れた。
-        Log.d("abc", t[0][0]);
-        //final TextView textView1;
-        //textView1 = findViewById(R.id.textview);
-        //textView1.setText("OK!!!!!");
+
+
+    public static void setInfo (String shop ,ArrayList<Map> product){
+        if(shop=="seven"){productInfoS = product;}
+        if(shop=="lawson"){productInfoL = product;}
+        if(shop=="family"){productInfoF = product;}
     }
 
 
