@@ -106,6 +106,7 @@ public class Database {
                                 SevenEleven.setData(sss);
                             }
                             Log.d("abc", "Seven complete");
+                            SevenEleven.sendMain();
                         } else {
                             Log.d("abc", "Error getting documents: ", task.getException());
                         }
@@ -143,6 +144,7 @@ public class Database {
                                 FamilyMart.setData(fff);
                             }
                             Log.d("abc", "Family complete");
+                            FamilyMart.sendMain();
                         } else {
                             Log.d("abc", "Error getting documents: ", task.getException());
                         }
