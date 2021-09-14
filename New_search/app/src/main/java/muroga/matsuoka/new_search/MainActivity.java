@@ -22,11 +22,9 @@ import android.widget.AdapterView.OnItemSelectedListener;
 public class MainActivity extends AppCompatActivity {
 
     private TextView textView;
-    private ImageView imageView0;
     private static String[][] textValues;
-    private static Bitmap[] imageValues;
     private final String[] spinnerArea = {"北海道", "東北", "関東", "甲信越", "東海", "近畿", "中国", "四国", "九州", "沖縄"};
-    private static Bitmap[] imageValues_2 = new Bitmap[10];
+    private static Bitmap[] imageValues = new Bitmap[100];
     private static Integer cnt=0;
 
     @Override
@@ -107,7 +105,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("abc", "Exe2");   //Stringは「文字列」
                 String str = String.join("\n", textValues[2]);  //二次元配列であるtextValueを一次元にがっちゃんこ。
                 textView.setText(str);
-                imageView2.setImageBitmap(imageValues_2[2]);
+                imageView2.setImageBitmap(imageValues[2]);
 
             }
         });
@@ -118,7 +116,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("abc", "Exe3");
                 String str = String.join("\n", textValues[3]);
                 textView.setText(str);
-                imageView3.setImageBitmap(imageValues_2[3]);
+                imageView3.setImageBitmap(imageValues[3]);
                 textView.setText(str);
             }
         });
@@ -130,7 +128,7 @@ public class MainActivity extends AppCompatActivity {
                 String str = String.join("\n", textValues[4]);
                 textView.setText(str);
                 textView.setText(str);
-                imageView4.setImageBitmap(imageValues_2[4]);
+                imageView4.setImageBitmap(imageValues[4]);
                 ImageView image4 = findViewById(R.id.imageview4);   //表示非表示
                 if (image4.getVisibility() != View.VISIBLE) {
                     image4.setVisibility(View.VISIBLE);
@@ -195,14 +193,10 @@ public class MainActivity extends AppCompatActivity {
         //textView1.setText("OK!!!!!");
     }
 
-    public static void setImageValues (Bitmap[]i){
-
-        imageValues = i;
-    }
 
     public static void setImageValue (Bitmap i){
         //imageValue = i;
-        imageValues_2[cnt] = i;
+        imageValues[cnt] = i;
         cnt++;
     }
 
