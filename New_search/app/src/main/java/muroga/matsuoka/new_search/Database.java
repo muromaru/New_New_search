@@ -150,26 +150,71 @@ public class Database {
 
 
 
-    void getImage(String date, String shop, Integer i) {
+    void getImage(String date, String shop, String name, Integer i) {
         StorageReference storageRef = storage.getReference();
-        StorageReference pathReference = storageRef.child(date+"/"+shop+i+".jpg");
-        StorageReference listRef = storageRef.child("2109_1");
+        StorageReference pathReference = storageRef.child(shop+date+"/"+name);
         final long ONE_MEGABYTE = 1024 * 1024;
         pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {
                 Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
-                MainActivity.setImage(shop,bitmap);
-                Log.d("abc", "success"+shop+(i+1));
+                MainActivity.setImage(shop, bitmap);
+                Log.d("abc", "success" + shop + (i + 1));
             }
         }).addOnFailureListener(new OnFailureListener() {
             @Override
             public void onFailure(@NonNull Exception exception) {
                 // Handle any errors
-                Log.d("abc", "error");
+                Log.d("abc", "no img");
             }
         });
+//        pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+//            @Override
+//            public void onSuccess(byte[] bytes) {
+//                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+//                Activity2.setImage(shop, bitmap);
+//                Log.d("abc", "success" + shop + (i + 1));
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                // Handle any errors
+//                Log.d("abc", "no img");
+//            }
+//        });
+
+    }
 
 
+
+    void getImageName(String shop, String date) {
+        StorageReference storageRef = storage.getReference();
+        StorageReference listRef = storageRef.child(shop+date);
+        listRef.listAll()
+                .addOnSuccessListener(new OnSuccessListener<ListResult>() {
+                    @Override
+                    public void onSuccess(ListResult listResult) {
+                        for (StorageReference item : listResult.getItems()) {
+                            // All the items under listRef.
+                            if(shop=="seven") {
+                                Content.setImageNameS(item.getName());
+                            }
+                            if(shop=="lawson") {
+                                Content.setImageNameL(item.getName());
+                            }
+                            if(shop=="family") {
+                                Content.setImageNameF(item.getName());
+                            }
+
+                        }
+                        Log.d("abc",shop+" name,finish");
+                    }
+                })
+                .addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+                        Log.d("abc","name_error");
+                    }
+                });
     }
 }
