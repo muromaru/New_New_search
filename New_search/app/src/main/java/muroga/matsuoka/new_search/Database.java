@@ -153,7 +153,7 @@ public class Database {
     void getImage(String date, String shop, String name, Integer i) {
         StorageReference storageRef = storage.getReference();
         StorageReference pathReference = storageRef.child(shop+date+"/"+name);
-        final long ONE_MEGABYTE = 1024 * 1024;
+        final long ONE_MEGABYTE = 2048 * 2048;
         pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
             @Override
             public void onSuccess(byte[] bytes) {

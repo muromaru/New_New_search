@@ -31,7 +31,7 @@ public class Content{
         di.getImageName("lawson", date);
         di.getImageName("family", date);
         try {
-            Thread.sleep(1000); // ミリ秒処理を止める
+            Thread.sleep(2000); // ミリ秒処理を止める
         } catch (InterruptedException e) {
         }
 
