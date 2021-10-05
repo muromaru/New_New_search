@@ -18,6 +18,9 @@ public class Content{
     public static ArrayList<String> productImageNameS = new ArrayList<String>();
     public static ArrayList<String> productImageNameL = new ArrayList<String>();
     public static ArrayList<String> productImageNameF = new ArrayList<String>();
+    public static ArrayList<String> productImageNameS_2 = new ArrayList<String>();
+    public static ArrayList<String> productImageNameL_2 = new ArrayList<String>();
+    public static ArrayList<String> productImageNameF_2 = new ArrayList<String>();
 
     void start()throws IOException {
 
@@ -31,7 +34,7 @@ public class Content{
         di.getImageName("lawson", date);
         di.getImageName("family", date);
         try {
-            Thread.sleep(1000); // ミリ秒処理を止める
+            Thread.sleep(2000); // ミリ秒処理を止める
         } catch (InterruptedException e) {
         }
 
@@ -45,6 +48,7 @@ public class Content{
         for(int i=0;i<productImageNameF.size();i++) {
             di.getImage(date,"family",productImageNameF.get(i), i);
         }
+
 
 
     }

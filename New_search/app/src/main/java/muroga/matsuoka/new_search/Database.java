@@ -168,6 +168,20 @@ public class Database {
                 Log.d("abc", "no img");
             }
         });
+//        pathReference.getBytes(ONE_MEGABYTE).addOnSuccessListener(new OnSuccessListener<byte[]>() {
+//            @Override
+//            public void onSuccess(byte[] bytes) {
+//                Bitmap bitmap = BitmapFactory.decodeByteArray(bytes, 0, bytes.length);
+//                Activity2.setImage(shop, bitmap);
+//                Log.d("abc", "success" + shop + (i + 1));
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                // Handle any errors
+//                Log.d("abc", "no img");
+//            }
+//        });
 
     }
 
@@ -191,6 +205,7 @@ public class Database {
                             if(shop=="family") {
                                 Content.setImageNameF(item.getName());
                             }
+
                         }
                         Log.d("abc",shop+" name,finish");
                     }
