@@ -27,7 +27,7 @@ public class Content{
         Database di = new Database();
         //d.setReview("lawson", "product01", 10, "ふわふわとろとろで今までのコンビニ焼き飯とは一線を画す味でした。");
         //d.setStar("lawson", "product4",  4.5);
-        //d.setStarNum("lawson", "product4");
+        
 
         String date = "0";
         di.getImageName("seven", date);
